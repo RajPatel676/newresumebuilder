@@ -6,6 +6,8 @@
 
 ---
 
+![Dashboard Preview](https://raw.githubusercontent.com/rajpatel676/newresumebuilder/main/image.png)
+
 ## 🚀 Project Overview
 
 **ResumeAI** is a **full-stack web application** that empowers users to create professional, ATS-friendly resumes with **AI-powered analysis** and export them in multiple formats.
@@ -251,4 +253,4 @@ Recommended stack:
 
 ✨ Built with ❤️ using MERN + Python + Google Gemini Pro
 
-![Dashboard Preview](https://raw.githubusercontent.com/rajpatel676/resumebuilder/main/image.png)
+
