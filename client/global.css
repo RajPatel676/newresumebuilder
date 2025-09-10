@@ -1,0 +1,398 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer base {
+  :root {
+    /* Dark Terminal Theme */
+    --primary: #00ff41; /* Terminal Green */
+    --primary-rgb: 0, 255, 65;
+    --primary-foreground: #000000;
+
+    --secondary: #1a1a1a; /* Dark Gray */
+    --secondary-rgb: 26, 26, 26;
+    --secondary-foreground: #ffffff;
+
+    --accent: #0f0f0f; /* Almost Black */
+    --accent-rgb: 15, 15, 15;
+    --accent-foreground: #ffffff;
+
+    --destructive: #ff4444; /* Terminal Red */
+    --destructive-rgb: 255, 68, 68;
+    --destructive-foreground: #000000;
+
+    --background: #000000; /* Pure Black Background */
+    --background-rgb: 0, 0, 0;
+    --foreground: #ffffff; /* Pure White text */
+    --foreground-rgb: 255, 255, 255;
+
+    --card: #0f0f0f; /* Dark cards */
+    --card-foreground: #ffffff;
+
+    --popover: #0f0f0f; /* Dark popovers */
+    --popover-foreground: #ffffff;
+
+    --muted: #262626; /* Muted Gray */
+    --muted-foreground: #a3a3a3;
+
+    --border: #333333; /* Dark borders */
+    --input: #1a1a1a; /* Dark inputs */
+    --ring: #00ff41; /* Terminal Green focus rings */
+
+    --radius: 4px; /* Sharp corners */
+
+    /* Terminal colors */
+    --score-excellent: #00ff41; /* Terminal Green 70+ */
+    --score-good: #ffff00; /* Terminal Yellow 40-70 */
+    --score-poor: #ff4444; /* Terminal Red <40 */
+  }
+
+  .dark {
+    /* Already dark - same as root */
+    --background: #000000;
+    --foreground: #ffffff;
+    --card: #0f0f0f;
+    --card-foreground: #ffffff;
+    --popover: #0f0f0f;
+    --popover-foreground: #ffffff;
+    --primary: #00ff41;
+    --primary-foreground: #000000;
+    --secondary: #1a1a1a;
+    --secondary-foreground: #ffffff;
+    --muted: #262626;
+    --muted-foreground: #a3a3a3;
+    --accent: #0f0f0f;
+    --accent-foreground: #ffffff;
+    --destructive: #ff4444;
+    --destructive-foreground: #000000;
+    --border: #333333;
+    --input: #1a1a1a;
+    --ring: #00ff41;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Terminal Developer Fonts */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+/* Terminal Typography */
+.font-heading {
+  font-family: 'JetBrains Mono', 'Consolas', 'Monaco', monospace;
+}
+
+.font-body {
+  font-family: 'JetBrains Mono', 'Consolas', 'Monaco', monospace;
+}
+
+/* Terminal Button Components */
+.minimal-button {
+  @apply inline-flex items-center justify-center rounded px-6 py-3 text-sm font-medium transition-all duration-200;
+  @apply bg-primary text-primary-foreground hover:bg-primary/90;
+  @apply focus:outline-none focus:ring-2 focus:ring-primary/50;
+  @apply disabled:opacity-50 disabled:pointer-events-none;
+  @apply border border-primary shadow-terminal;
+}
+
+.minimal-button-outline {
+  @apply inline-flex items-center justify-center rounded px-6 py-3 text-sm font-medium transition-all duration-200;
+  @apply border border-primary bg-background text-primary;
+  @apply hover:bg-primary hover:text-primary-foreground;
+  @apply focus:outline-none focus:ring-2 focus:ring-primary/50;
+  @apply shadow-terminal hover:shadow-glow;
+}
+
+.minimal-button-primary {
+  @apply inline-flex items-center justify-center rounded-md px-8 py-4 text-base font-semibold transition-all duration-200;
+  @apply bg-primary text-primary-foreground hover:bg-primary/90;
+  @apply focus:outline-none focus:ring-2 focus:ring-primary/20 focus:ring-offset-2;
+  @apply shadow-minimal-lg hover:shadow-minimal-xl;
+}
+
+.modern-button-secondary {
+  @apply inline-flex items-center justify-center rounded-xl px-8 py-4 text-base font-semibold transition-all duration-300;
+  @apply bg-white/80 backdrop-blur-sm border border-gray-200 text-gray-700;
+  @apply hover:bg-white hover:border-purple-300 hover:text-purple-700;
+  @apply shadow-lg hover:shadow-xl transform hover:scale-105;
+}
+
+.minimal-input {
+  @apply flex h-12 w-full rounded border border-border bg-input px-4 py-2 text-sm;
+  @apply placeholder:text-muted-foreground;
+  @apply focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary;
+  @apply disabled:cursor-not-allowed disabled:opacity-50;
+  @apply transition-all duration-200 font-mono;
+}
+
+.minimal-card {
+  @apply rounded border border-border bg-card text-card-foreground;
+  @apply shadow-terminal hover:shadow-glow transition-all duration-200;
+  @apply hover:border-primary/50;
+}
+
+.score-meter {
+  @apply relative inline-flex items-center justify-center w-32 h-32 rounded-full;
+}
+
+.score-excellent {
+  color: var(--score-excellent);
+  border-color: var(--score-excellent);
+}
+
+.score-good {
+  color: var(--score-good);
+  border-color: var(--score-good);
+}
+
+.score-poor {
+  color: var(--score-poor);
+  border-color: var(--score-poor);
+}
+
+/* Enhanced animations */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Smooth transitions */
+.transition-smooth {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Toast notifications */
+.toast-success {
+  @apply bg-accent text-accent-foreground;
+}
+
+.toast-error {
+  @apply bg-destructive text-destructive-foreground;
+}
+
+.toast-warning {
+  @apply bg-score-good text-white;
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+  .mobile-stack {
+    @apply flex-col;
+  }
+  
+  .mobile-full {
+    @apply w-full;
+  }
+}
+
+/* Accessibility */
+.focus-visible {
+  @apply outline-none ring-2 ring-primary/50 ring-offset-2;
+}
+
+/* Terminal-Specific Classes */
+.terminal-cursor {
+  @apply inline-block w-3 h-6 bg-primary animate-terminal-blink;
+}
+
+.terminal-text {
+  @apply font-mono text-primary;
+}
+
+.terminal-window {
+  @apply bg-background border border-primary/50 rounded shadow-terminal;
+}
+
+.terminal-header {
+  @apply bg-accent border-b border-primary/30 px-4 py-2 flex items-center gap-2;
+}
+
+.terminal-dot {
+  @apply w-3 h-3 rounded-full;
+}
+
+.terminal-dot-red {
+  @apply bg-red-500;
+}
+
+.terminal-dot-yellow {
+  @apply bg-yellow-500;
+}
+
+.terminal-dot-green {
+  @apply bg-primary;
+}
+
+.matrix-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.matrix-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, rgba(0, 255, 65, 0.1), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(0, 255, 65, 0.05), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(0, 255, 65, 0.1), transparent);
+  background-repeat: repeat;
+  background-size: 100px 100px;
+  pointer-events: none;
+}
+
+.glow-text {
+  text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+}
+
+.scan-line {
+  position: relative;
+  overflow: hidden;
+}
+
+.scan-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.8), transparent);
+  animation: scan-line 2s linear infinite;
+}
+
+/* Clean Minimal shadows */
+.shadow-minimal {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.shadow-minimal-lg {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+.shadow-minimal-xl {
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Clean Minimal gradient backgrounds */
+.bg-gradient-minimal {
+  background: linear-gradient(135deg, #FFFFFF 0%, #F9FAFB 100%);
+}
+
+.bg-gradient-minimal-dark {
+  background: linear-gradient(135deg, #F9FAFB 0%, #F3F4F6 100%);
+}
+
+.bg-gradient-minimal-accent {
+  background: linear-gradient(135deg, #F3F4F6 0%, #E5E7EB 100%);
+}
+
+.bg-pattern-geometric {
+  background-image: radial-gradient(circle at 25px 25px, #E5E7EB 1px, transparent 0), radial-gradient(circle at 75px 75px, #9CA3AF 1px, transparent 0);
+  background-size: 100px 100px;
+}
+
+/* Backdrop blur effects */
+.backdrop-blur-modern {
+  backdrop-filter: blur(12px) saturate(190%) contrast(70%) brightness(80%);
+}
+
+/* Clean minimal card effects */
+.minimal-card-white {
+  @apply bg-white border border-gray-200 rounded-lg shadow-minimal;
+}
+
+.minimal-card-subtle {
+  @apply bg-gray-50 border border-gray-300 rounded-lg shadow-minimal;
+}
+
+/* Progress bars */
+.progress-bar {
+  @apply w-full bg-secondary rounded-full h-2 overflow-hidden;
+}
+
+.progress-fill {
+  @apply h-full rounded-full transition-all duration-1000 ease-out;
+}
+
+/* Section dividers */
+.section-divider {
+  @apply border-t border-border my-6;
+}
+
+/* Line clamp utilities for text truncation */
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
